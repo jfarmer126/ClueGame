@@ -12,10 +12,10 @@ import experiment.IntBoard;
 
 public class IntBoardTests {
 	
-	private IntBoard board;
+	public IntBoard board;
+	
 	@Before
 	public void initIntBoard() {
-		board = new IntBoard();
 		board.calcAdjacencies();
 	}
 	

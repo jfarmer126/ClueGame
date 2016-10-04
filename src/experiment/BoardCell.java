@@ -1,16 +1,33 @@
 package experiment;
 
-public class BoardCell {
+public class BoardCell{
 	private int row;
 	private int column;
+	private char initial;
+	private DoorDirection door;
 	
 	public BoardCell(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
-<<<<<<< HEAD
+	public char getInitial(){
+		return initial;
+	}
+	public DoorDirection getDirection(){
+		return door;
+	}
+	public boolean isWalkway(){
+		return false;
+	}
+	public boolean isRoom(){
+		return false;
+	}
+	public boolean isDoorway(){
+		return false;
+	}
+/*<<<<<<< HEAD
 =======
 
->>>>>>> fc3ce3217921b63ab50193df67db15de920d4117
+>>>>>>> fc3ce3217921b63ab50193df67db15de920d4117 */
 }
 

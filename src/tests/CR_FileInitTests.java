@@ -14,9 +14,10 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import clueGame.Board;
-import clueGame.BoardCell;
-import clueGame.DoorDirection;
+import experiment.IntBoard;
+import experiment.BoardCell;
+import experiment.DoorDirection;
+
 
 public class CR_FileInitTests {
 	// Constants that I will use to test whether the file was loaded correctly
@@ -26,12 +27,12 @@ public class CR_FileInitTests {
 
 	// NOTE: I made Board static because I only want to set it up one 
 	// time (using @BeforeClass), no need to do setup before each test.
-	private static Board board;
+	private static IntBoard board;
 	
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+		board = IntBoard.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("CR_ClueLayout.csv", "CR_ClueLegend.txt");		
 		// Initialize will load BOTH config files 

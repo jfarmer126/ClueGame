@@ -47,11 +47,11 @@ public class CR_FileInitTests {
 		assertEquals(LEGEND_SIZE, legend.size());
 		// To ensure data is correctly loaded, test retrieving a few rooms 
 		// from the hash, including the first and last in the file and a few others
-		assertEquals("Conservatory", legend.getCellAt('C'));
-		assertEquals("Ballroom", legend.getCellAt('B'));
-		assertEquals("Billiard room", legend.getCellAt('R'));
-		assertEquals("Dining room", legend.getCellAt('D'));
-		assertEquals("Walkway", legend.getCellAt('W'));
+		assertEquals("Conservatory", legend.get('C'));
+		assertEquals("Ballroom", legend.get('B'));
+		assertEquals("Billiard room", legend.get('R'));
+		assertEquals("Dining room", legend.get('D'));
+		assertEquals("Walkway", legend.get('W'));
 	}
 	
 	@Test

@@ -1,0 +1,15 @@
+For the tests for door directions,
+kitchen has a door at (6,1) going down
+Foosball Room has a door at (2,18) going to the left
+
+For tests for number of rooms, 
+we have a total of 24*24 rooms.
+
+For tests for number of doors,
+we found every cell with a door (total of 24)
+
+For test of room initials,
+Kitchen has initial of 'K' at (0,0);
+Walkways has inital of 'W' at (0,3);
+
+

@@ -29,23 +29,23 @@ public Map<Character, String> legend;
 	
 	@Test
 	public void DoorDirections() {
-		BoardCell room = board.getCell(6, 1);
+		BoardCell room = board.getCellAt(6, 1);
 		assertTrue(room.isDoorway());
 		assertEquals(DoorDirection.DOWN, room.getDirection());
-		room = board.getCell(2, 18);
+		room = board.getCellAt(2, 18);
 		assertTrue(room.isDoorway());
 		assertEquals(DoorDirection.LEFT, room.getDirection());
-		room = board.getCell(9,5);
+		room = board.getCellAt(9,5);
 		assertTrue(room.isDoorway());
 		assertEquals(DoorDirection.RIGHT, room.getDirection());
-		room = board.getCell(16, 12);
+		room = board.getCellAt(16, 12);
 		assertTrue(room.isDoorway());
 		assertEquals(DoorDirection.UP, room.getDirection());
 		// Test that room pieces that aren't doors know it
-		room = board.getCell(0, 0);
+		room = board.getCellAt(0, 0);
 		assertFalse(room.isDoorway());	
 		// Test that walkways are not doors
-		BoardCell cell = board.getCell(5, 3);
+		BoardCell cell = board.getCellAt(5, 3);
 		assertFalse(cell.isDoorway());		
 	}
 
@@ -61,7 +61,7 @@ public Map<Character, String> legend;
 		int count = 0;
 		for(int i = 0; i < board.getMyRow(); i++){
 			for(int j = 0; j < board.getMyCol(); j++){
-				if(board.getCell(i, j).isDoorway() == true){
+				if(board.getCellAt(i, j).isDoorway() == true){
 					count ++;
 				}
 			}
@@ -73,16 +73,16 @@ public Map<Character, String> legend;
 	@Test
 	public void testRoomInitials() {
 		// Test first cell in room
-		assertEquals('C', board.getCell(18, 9).getInitial());
-		assertEquals('G', board.getCell(17, 19).getInitial());
-		assertEquals('B', board.getCell(6, 20).getInitial());
+		assertEquals('C', board.getCellAt(18, 9).getInitial());
+		assertEquals('G', board.getCellAt(17, 19).getInitial());
+		assertEquals('B', board.getCellAt(6, 20).getInitial());
 		// Test last cell in room
-		assertEquals('D', board.getCell(7, 1).getInitial());
-		assertEquals('K', board.getCell(0, 0).getInitial());
+		assertEquals('D', board.getCellAt(7, 1).getInitial());
+		assertEquals('K', board.getCellAt(0, 0).getInitial());
 		// Test a walkway
-		assertEquals('W', board.getCell(0, 3).getInitial());
+		assertEquals('W', board.getCellAt(0, 3).getInitial());
 		// Test the closet
-		assertEquals('T', board.getCell(16,0).getInitial());
+		assertEquals('T', board.getCellAt(16,0).getInitial());
 	}
 	
 	

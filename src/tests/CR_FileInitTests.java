@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import experiment.IntBoard;
+import experiment.BadConfigFormatException;
 import experiment.BoardCell;
 import experiment.DoorDirection;
 
@@ -30,11 +31,11 @@ public class CR_FileInitTests {
 	private static IntBoard board;
 	
 	@BeforeClass
-	public static void setUp() {
+	public static void setUp() throws BadConfigFormatException {
 		// Board is singleton, get the only instance
 		board = IntBoard.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("CR_ClueLayout.csv", "CR_ClueLegend.txt");		
+		board.setConfigFiles("data/CR_ClueLayout.csv", "data/CR_ClueLegend.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
 	}
@@ -46,11 +47,11 @@ public class CR_FileInitTests {
 		assertEquals(LEGEND_SIZE, legend.size());
 		// To ensure data is correctly loaded, test retrieving a few rooms 
 		// from the hash, including the first and last in the file and a few others
-		assertEquals("Conservatory", legend.get('C'));
-		assertEquals("Ballroom", legend.get('B'));
-		assertEquals("Billiard room", legend.get('R'));
-		assertEquals("Dining room", legend.get('D'));
-		assertEquals("Walkway", legend.get('W'));
+		assertEquals("Conservatory", legend.getCellAt('C'));
+		assertEquals("Ballroom", legend.getCellAt('B'));
+		assertEquals("Billiard room", legend.getCellAt('R'));
+		assertEquals("Dining room", legend.getCellAt('D'));
+		assertEquals("Walkway", legend.getCellAt('W'));
 	}
 	
 	@Test

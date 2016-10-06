@@ -10,6 +10,9 @@ public class BoardCell{
 		this.row = row;
 		this.column = column;
 	}
+	public void setInitial(char c){
+		initial = c;
+	}
 	public char getInitial(){
 		return initial;
 	}
@@ -25,9 +28,6 @@ public class BoardCell{
 	public boolean isDoorway(){
 		return false;
 	}
-/*<<<<<<< HEAD
-=======
-
->>>>>>> fc3ce3217921b63ab50193df67db15de920d4117 */
+	
 }
 

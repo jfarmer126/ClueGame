@@ -18,8 +18,8 @@ public class IntBoard {
 	private static int myCol = 4;
 	private static IntBoard theBoard = new IntBoard();
 
-	private String boardConfigFile = "CR_ClueLayout.txt";
-	private String roomConfigFile = "CR_ClueLegend.txt";
+	private String boardConfigFile = null;
+	private String roomConfigFile= null;
 	private Map<Character, String> rooms;
 	
 	private IntBoard() {
@@ -86,7 +86,7 @@ public class IntBoard {
 		return myMap.get(cell);
 	}
 	
-	public BoardCell getCell(int num1, int num2) {
+	public BoardCell getCellAt(int num1, int num2) {
 		return grid[num1][num2];
 	}
 	public static int getMyRow() {
@@ -95,18 +95,48 @@ public class IntBoard {
 	public static int getMyCol() {
 		return myCol;
 	}
+	public void setConfigFiles(String layout, String legend){
+		boardConfigFile = layout;
+		roomConfigFile = legend;
+	}
 
 
 	public void loadRoomconfig() throws FileNotFoundException{
-		FileReader r= new FileReader(roomConfigFile);
-		Scanner in = new Scanner(r);
+		FileReader legend= new FileReader(roomConfigFile);
+		Scanner in = new Scanner(legend).useDelimiter(",");
 		rooms = new HashMap<Character, String>();
-		String line = in.nextLine();
+		while (in.hasNext()){
+			String line = in.next();
+			
+		}
+		
+		
 		//Character c = line.;
 		
 		
 	}
 	public void loadBoardconfig() throws FileNotFoundException{
 		FileReader layout = new FileReader(boardConfigFile);
+		Scanner in = new Scanner(layout);
+		int rowcount = 0;
+		while (in.hasNextLine()){
+			String[] result = in.nextLine().split(",");
+			for(int j=0; j< result.length; j++ ){
+				char temp = result[j].charAt(0);
+				grid[rowcount][j].setInitial(temp);
+				System.out.println(temp);
+			}
+			rowcount++;
+			
+		}
+	}
+	public void initialize() throws BadConfigFormatException {
+		try{
+			loadRoomconfig();
+			loadBoardconfig();
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

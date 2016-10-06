@@ -14,8 +14,8 @@ public class IntBoard {
 	private Set<BoardCell> visited;
 	private Set<BoardCell> targets; 
 	private BoardCell [][] grid = new BoardCell [MAX_BOARD_SIZE][MAX_BOARD_SIZE];
-	private static int myRow = 4;
-	private static int myCol = 4;
+	private static int myRow;
+	private static int myCol;
 	private static IntBoard theBoard = new IntBoard();
 
 	private String boardConfigFile = null;
@@ -114,7 +114,7 @@ public class IntBoard {
 			char temp = part1.charAt(0);
 			String part2 = result[1];
 			String part3 = result[2];
-			if ((!part3.equals("Card")) ||(!part3.equals("Other"))){
+			if ((!part3.equals("Card")) && (!part3.equals("Other"))){
 				throw new BadConfigFormatException();
 			}
 			rooms.put(temp, part2);
@@ -124,17 +124,28 @@ public class IntBoard {
 		FileReader layout = new FileReader(boardConfigFile);
 		Scanner in = new Scanner(layout);
 		int rowCount = 0;
+		int count1 = 0;
+		int count2 = 0;
 		while (in.hasNextLine()){
 			String[] result = in.nextLine().split(",");
-			for(int j=0; j< result.length; j++ ){
+			count2 = result.length;
+			if(rowCount == 0){
+				count1 = count2;
+			}
+			if(count1 != count2){
+				System.out.println(rowCount);
+				throw new BadConfigFormatException();
+				
+			}
+			for(int j=0; j< result.length; j++){
 				if (result[j].length() > 1) {
 					if (result[j].charAt(1) != 'N') {
 						grid[rowCount][j].setDoorDirection(result[j].charAt(1));
 					}
 				}
 				char temp = result[j].charAt(0);
-				if (!rooms.containsKey(temp)) {
-					throw new BadConfigFormatException();
+				if (rooms.containsKey(temp) == false) {
+					throw new BadConfigFormatException(String.valueOf(temp));
 				}
 				grid[rowCount][j].setInitial(temp);
 				myCol = result.length;

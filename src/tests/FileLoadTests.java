@@ -24,6 +24,11 @@ public Map<Character, String> legend;
 	}
 	@Test
 	public void testNumberofRooms() {
+		assertEquals("Concert Hall", legend.get('C'));
+		assertEquals("Kitchen", legend.get('K'));
+		assertEquals("Living room", legend.get('L'));
+		assertEquals("Closet", legend.get('X'));
+		assertEquals("Walkway", legend.get('W'));
 		assertEquals(9, legend.size());
 	}
 	
@@ -52,8 +57,8 @@ public Map<Character, String> legend;
 	
 	@Test
 	public void testCols_Rows() {
-		assertEquals(23, board.getMyRow());
-		assertEquals(23, board.getMyCol());
+		assertEquals(24, board.getMyRow());
+		assertEquals(24, board.getMyCol());
 	}
 	
 	@Test

@@ -20,7 +20,7 @@ public Map<Character, String> legend;
 	public void initIntBoard() {
 		board = IntBoard.getInstance();
 		board.calcAdjacencies();
-		legend = board.getRooms();
+		legend = board.getLegend();
 	}
 	@Test
 	public void testNumberofRooms() {
@@ -31,16 +31,16 @@ public Map<Character, String> legend;
 	public void DoorDirections() {
 		BoardCell room = board.getCellAt(6, 1);
 		assertTrue(room.isDoorway());
-		assertEquals(DoorDirection.DOWN, room.getDirection());
+		assertEquals(DoorDirection.DOWN, room.getDoorDirection());
 		room = board.getCellAt(2, 18);
 		assertTrue(room.isDoorway());
-		assertEquals(DoorDirection.LEFT, room.getDirection());
+		assertEquals(DoorDirection.LEFT, room.getDoorDirection());
 		room = board.getCellAt(9,5);
 		assertTrue(room.isDoorway());
-		assertEquals(DoorDirection.RIGHT, room.getDirection());
+		assertEquals(DoorDirection.RIGHT, room.getDoorDirection());
 		room = board.getCellAt(16, 12);
 		assertTrue(room.isDoorway());
-		assertEquals(DoorDirection.UP, room.getDirection());
+		assertEquals(DoorDirection.UP, room.getDoorDirection());
 		// Test that room pieces that aren't doors know it
 		room = board.getCellAt(0, 0);
 		assertFalse(room.isDoorway());	
@@ -52,15 +52,15 @@ public Map<Character, String> legend;
 	
 	@Test
 	public void testCols_Rows() {
-		assertEquals(23, board.getMyRow());
-		assertEquals(23, board.getMyCol());
+		assertEquals(23, board.getNumRows());
+		assertEquals(23, board.getNumColumns());
 	}
 	
 	@Test
 	public void testNumDoors() {
 		int count = 0;
-		for(int i = 0; i < board.getMyRow(); i++){
-			for(int j = 0; j < board.getMyCol(); j++){
+		for(int i = 0; i < board.getNumRows(); i++){
+			for(int j = 0; j < board.getNumColumns(); j++){
 				if(board.getCellAt(i, j).isDoorway() == true){
 					count ++;
 				}

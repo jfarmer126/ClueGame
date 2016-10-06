@@ -4,16 +4,19 @@ public class BoardCell{
 	private int row;
 	private int column;
 	private char initial;
-	private DoorDirection door;
-	
+	private DoorDirection door = DoorDirection.NONE;
+
 	public BoardCell(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
+	public void setInitial(char c){
+		initial = c;
+	}
 	public char getInitial(){
 		return initial;
 	}
-	public DoorDirection getDirection(){
+	public DoorDirection getDoorDirection(){
 		return door;
 	}
 	public boolean isWalkway(){
@@ -23,11 +26,24 @@ public class BoardCell{
 		return false;
 	}
 	public boolean isDoorway(){
-		return false;
+		if (door == DoorDirection.NONE) {
+			return false;
+		}
+		return true;
 	}
-/*<<<<<<< HEAD
-=======
-
->>>>>>> fc3ce3217921b63ab50193df67db15de920d4117 */
+	public void setDoorDirection(char c) {
+		if (c == 'R') {
+			door = DoorDirection.RIGHT;
+		}
+		if (c == 'L') {
+			door = DoorDirection.LEFT;
+		}
+		if (c == 'D') {
+			door = DoorDirection.DOWN;
+		}
+		if (c == 'U') {
+			door = DoorDirection.UP;
+		}
+	}
 }
 

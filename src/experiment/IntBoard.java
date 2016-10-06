@@ -18,10 +18,10 @@ public class IntBoard {
 	private static int myCol = 4;
 	private static IntBoard theBoard = new IntBoard();
 
-	private String boardConfigFile = "CR_ClueLayout.txt";
-	private String roomConfigFile = "CR_ClueLegend.txt";
+	private String boardConfigFile = null;
+	private String roomConfigFile= null;
 	private Map<Character, String> rooms;
-	
+
 	private IntBoard() {
 		for (int i = 0; i < MAX_BOARD_SIZE; i++) {
 			for (int j = 0; j < MAX_BOARD_SIZE; j++) {
@@ -35,26 +35,26 @@ public class IntBoard {
 	public static IntBoard getInstance() {
 		return theBoard;
 	}
-	
+
 	public void calcAdjacencies() {
 		myMap = new HashMap<BoardCell, Set<BoardCell>> ();
 		for (int i = 0; i < myRow; i++) {
 			for (int j = 0; j < myCol; j++) {
 				Set<BoardCell> temp = new HashSet<BoardCell> ();
 				if (i+1 < myRow) 
-				temp.add(grid[i+1][j]);
+					temp.add(grid[i+1][j]);
 				if (j+1 < myCol) {
-				temp.add(grid[i][j+1]);
+					temp.add(grid[i][j+1]);
 				}
 				if (i-1 >= 0)
-				temp.add(grid[i-1][j]);
+					temp.add(grid[i-1][j]);
 				if (j-1 >= 0)
-				temp.add(grid[i][j-1]);
+					temp.add(grid[i][j-1]);
 				myMap.put(grid[i][j], temp);
 			}
 		}
 	}
-	
+
 	public void calcTargets(BoardCell startCell, int pathLength) {
 		visited.add(startCell);
 		for (BoardCell b : myMap.get(startCell)) {
@@ -70,43 +70,85 @@ public class IntBoard {
 			}	
 		}
 	}
-	
-	public Map<Character, String> getRooms() {
+
+	public Map<Character, String> getLegend() {
 		return rooms;
 	}
 
 
 	public Set<BoardCell> getTargets() {
-		
+
 		return targets;
 	}
-	
+
 	public Set<BoardCell> getAdjList(BoardCell cell) {
-		
+
 		return myMap.get(cell);
 	}
-	
-	public BoardCell getCell(int num1, int num2) {
+
+	public BoardCell getCellAt(int num1, int num2) {
 		return grid[num1][num2];
 	}
-	public static int getMyRow() {
+
+	public static int getNumRows() {
 		return myRow;
 	}
-	public static int getMyCol() {
+	public static int getNumColumns() {
 		return myCol;
 	}
 
-
-	public void loadRoomconfig() throws FileNotFoundException{
-		FileReader r= new FileReader(roomConfigFile);
-		Scanner in = new Scanner(r);
-		rooms = new HashMap<Character, String>();
-		String line = in.nextLine();
-		//Character c = line.;
-		
-		
+	public void setConfigFiles(String layout, String legend){
+		boardConfigFile = layout;
+		roomConfigFile = legend;
 	}
-	public void loadBoardconfig() throws FileNotFoundException{
+
+
+	public void loadRoomConfig() throws FileNotFoundException, BadConfigFormatException{
+		FileReader legend = new FileReader(roomConfigFile);
+		Scanner in = new Scanner(legend);
+		rooms = new HashMap<Character, String>();
+		while (in.hasNextLine()) {
+			String line = in.nextLine();
+			String result[] = line.split(", ");
+			String part1 = result[0];
+			char temp = part1.charAt(0);
+			String part2 = result[1];
+			String part3 = result[2];
+			if ((!part3.equals("Card")) ||(!part3.equals("Other"))){
+				throw new BadConfigFormatException();
+			}
+			rooms.put(temp, part2);
+		}
+	}
+	public void loadBoardConfig() throws FileNotFoundException, BadConfigFormatException {
 		FileReader layout = new FileReader(boardConfigFile);
+		Scanner in = new Scanner(layout);
+		int rowCount = 0;
+		while (in.hasNextLine()){
+			String[] result = in.nextLine().split(",");
+			for(int j=0; j< result.length; j++ ){
+				if (result[j].length() > 1) {
+					if (result[j].charAt(1) != 'N') {
+						grid[rowCount][j].setDoorDirection(result[j].charAt(1));
+					}
+				}
+				char temp = result[j].charAt(0);
+				if (!rooms.containsKey(temp)) {
+					throw new BadConfigFormatException();
+				}
+				grid[rowCount][j].setInitial(temp);
+				myCol = result.length;
+			}
+			rowCount++;
+		}
+		myRow = rowCount;
+	}
+	public void initialize() {
+		try {
+			loadRoomConfig();
+			loadBoardConfig();
+		}catch (Exception b) {
+		}
+
 	}
 }

@@ -133,7 +133,6 @@ public class IntBoard {
 				count1 = count2;
 			}
 			if(count1 != count2){
-				System.out.println(rowCount);
 				throw new BadConfigFormatException();
 				
 			}
@@ -159,6 +158,7 @@ public class IntBoard {
 			loadRoomConfig();
 			loadBoardConfig();
 		}catch (Exception b) {
+			
 		}
 
 	}

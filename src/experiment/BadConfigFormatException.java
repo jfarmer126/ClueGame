@@ -5,7 +5,7 @@ public class BadConfigFormatException extends Exception {
 		System.out.println("This file is in a bad format!");
 	}
 	BadConfigFormatException(String s){
-		System.out.println("This is invalid: " + s);
+		System.out.println("This is room is invalid: " + s);
 	}
 	
 }

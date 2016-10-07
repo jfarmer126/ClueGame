@@ -11,16 +11,19 @@ import experiment.BoardCell;
 import experiment.DoorDirection;
 import experiment.IntBoard;
 
+//These are the our written tests
 public class FileLoadTests {
 
+	//Initializes board
 	public IntBoard board;
-
+	
 	@Before
 	public void initIntBoard() {
 		board = IntBoard.getInstance();
 		board.setConfigFiles("data/Clue.csv", "data/legend.txt");
 		board.initialize();
 	}
+	//Tests location of rooms and total number of rooms
 	@Test
 	public void testNumberofRooms() {
 		Map<Character, String> legend = board.getLegend();
@@ -31,7 +34,7 @@ public class FileLoadTests {
 		assertEquals("Walkway", legend.get('W'));
 		assertEquals(11, legend.size());
 	}
-
+	//Tests that doors open in the correct location
 	@Test
 	public void DoorDirections() {
 		BoardCell room = board.getCellAt(5, 1);
@@ -54,13 +57,13 @@ public class FileLoadTests {
 		assertFalse(cell.isDoorway());		
 	}
 
-
+//Tests number of rows and columns are as expected
 	@Test
 	public void testCols_Rows() {
 		assertEquals(24, board.getNumRows());
 		assertEquals(24, board.getNumColumns());
 	}
-
+//tests correct number of doors
 	@Test
 	public void testNumDoors() {
 		int count = 0;
@@ -74,6 +77,7 @@ public class FileLoadTests {
 		assertEquals(21, count);
 
 	}
+	//test that rooms are correctly labeled
 	@Test
 	public void testRoomInitials() {
 		// Test first cell in room

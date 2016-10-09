@@ -10,7 +10,7 @@ public class BoardCell{
 		this.row = row;
 		this.column = column;
 	}
-	
+
 	public int getRow() {
 		return row;
 	}
@@ -30,10 +30,18 @@ public class BoardCell{
 		return door;
 	}
 	public boolean isWalkway(){
+		if (initial == 'W') {
+			return true;
+		}
 		return false;
 	}
 	public boolean isRoom(){
-		return false;
+		if (initial != 'W' && isDoorway() == false) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	public boolean isDoorway(){
 		if (door == DoorDirection.NONE) {
@@ -55,5 +63,11 @@ public class BoardCell{
 			door = DoorDirection.UP;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return row +" " + column;
+	}
+
 }
 

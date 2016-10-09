@@ -12,19 +12,21 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import clueGame.Board;
-import clueGame.BoardCell;
+import experiment.IntBoard;
+import experiment.BoardCell;
+import experiment.IntBoard;
 
 public class CR_BoardAdjTargetTests {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
-	private static Board board;
+	private static IntBoard board;
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance and initialize it		
-		board = Board.getInstance();
-		board.setConfigFiles("CR_ClueLayout.csv", "CR_ClueLegend.txt");		
+		board = IntBoard.getInstance();
+		board.setConfigFiles("data/CR_ClueLayout.csv", "data/CR_ClueLegend.txt");		
 		board.initialize();
+		board.calcAdjacencies();
 	}
 
 	// Ensure that player does not move around within room

@@ -55,16 +55,16 @@ public class IntBoard {
 		}
 	}
 
-	public void calcTargets(BoardCell startCell, int pathLength) {
-		visited.add(startCell);
-		for (BoardCell b : myMap.get(startCell)) {
+	public void calcTargets(int row, int col, int pathLength) {
+		visited.add(grid[row][col]);
+		for (BoardCell b : myMap.get(grid[row][col])) {
 			if (!(visited.contains(b))) {
 				visited.add(b);
 				if (pathLength == 1) {
 					targets.add(b);
 				}
 				else {
-					calcTargets(b, pathLength-1);
+					calcTargets(b.getRow(), b.getColumn(), pathLength-1);
 				}
 				visited.remove(b);
 			}	
@@ -81,9 +81,9 @@ public class IntBoard {
 		return targets;
 	}
 
-	public Set<BoardCell> getAdjList(BoardCell cell) {
+	public Set<BoardCell> getAdjList(int row, int col) {
 
-		return myMap.get(cell);
+		return myMap.get(grid[row][col]);
 	}
 
 	public BoardCell getCellAt(int num1, int num2) {

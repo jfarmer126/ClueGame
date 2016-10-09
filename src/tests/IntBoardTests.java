@@ -108,54 +108,52 @@ public class IntBoardTests {
 	}
 
 	// Test a variety of walkway scenarios
-	// These tests are LIGHT PURPLE on the planning spreadsheet
+	// These tests are BROWN on the planning spreadsheet
 	@Test
 	public void testAdjacencyWalkways()
 	{
 		// Test on top edge of board, just one walkway piece
-		Set<BoardCell> testList = board.getAdjList(0, 4);
-		assertTrue(testList.contains(board.getCellAt(0, 5)));
+		Set<BoardCell> testList = board.getAdjList(0, 3);
+		assertTrue(testList.contains(board.getCellAt(0, 4)));
 		assertEquals(1, testList.size());
 
 		// Test on left edge of board, three walkway pieces
-		testList = board.getAdjList(6, 0);
-		assertTrue(testList.contains(board.getCellAt(5, 0)));
-		assertTrue(testList.contains(board.getCellAt(6, 1)));
+		testList = board.getAdjList(8, 0);
 		assertTrue(testList.contains(board.getCellAt(7, 0)));
-		assertEquals(3, testList.size());
+		assertTrue(testList.contains(board.getCellAt(9, 0)));
+		assertEquals(2, testList.size());
 
 		// Test between two rooms, walkways right and left
-		testList = board.getAdjList(6, 21);
-		assertTrue(testList.contains(board.getCellAt(6, 20)));
-		assertTrue(testList.contains(board.getCellAt(6, 22)));
+		testList = board.getAdjList(23, 15);
+		assertTrue(testList.contains(board.getCellAt(23, 16)));
+		assertTrue(testList.contains(board.getCellAt(22, 15)));
 		assertEquals(2, testList.size());
 
 		// Test surrounded by 4 walkways
-		testList = board.getAdjList(15,7);
-		assertTrue(testList.contains(board.getCellAt(15, 8)));
-		assertTrue(testList.contains(board.getCellAt(15, 6)));
-		assertTrue(testList.contains(board.getCellAt(14, 7)));
-		assertTrue(testList.contains(board.getCellAt(16, 7)));
+		testList = board.getAdjList(14,14);
+		assertTrue(testList.contains(board.getCellAt(13, 14)));
+		assertTrue(testList.contains(board.getCellAt(15, 14)));
+		assertTrue(testList.contains(board.getCellAt(14, 15)));
+		assertTrue(testList.contains(board.getCellAt(14, 13)));
 		assertEquals(4, testList.size());
 
 		// Test on bottom edge of board, next to 1 room piece
-		testList = board.getAdjList(21, 15);
-		assertTrue(testList.contains(board.getCellAt(21, 16)));
-		assertTrue(testList.contains(board.getCellAt(20, 15)));
-		assertEquals(2, testList.size());
+		testList = board.getAdjList(23, 7);
+		assertTrue(testList.contains(board.getCellAt(22, 7)));
+		
+		assertEquals(1, testList.size());
 
 		// Test on right edge of board, next to 1 room piece
-		testList = board.getAdjList(14, 22);
-		assertTrue(testList.contains(board.getCellAt(14, 21)));
-		assertTrue(testList.contains(board.getCellAt(13, 22)));
-		assertEquals(2, testList.size());
+		testList = board.getAdjList(14, 23);
+		assertTrue(testList.contains(board.getCellAt(14, 22)));
+		assertEquals(1, testList.size());
 
 		// Test on walkway next to  door that is not in the needed
 		// direction to enter
-		testList = board.getAdjList(5, 3);
-		assertTrue(testList.contains(board.getCellAt(5, 2)));
-		assertTrue(testList.contains(board.getCellAt(5, 4)));
-		assertTrue(testList.contains(board.getCellAt(6, 3)));
+		testList = board.getAdjList(15, 6);
+		assertTrue(testList.contains(board.getCellAt(15, 5)));
+		assertTrue(testList.contains(board.getCellAt(15, 7)));
+		assertTrue(testList.contains(board.getCellAt(14, 6)));
 		assertEquals(3, testList.size());
 	}
 
@@ -167,36 +165,32 @@ public class IntBoardTests {
 	// These are LIGHT BLUE on the planning spreadsheet
 	@Test
 	public void testTargetsOneStep() {
-		board.calcTargets(21, 7, 1);
+		board.calcTargets(6, 23, 1);
 		Set<BoardCell> targets= board.getTargets();
-		assertEquals(2, targets.size());
-		assertTrue(targets.contains(board.getCellAt(20, 7)));
-		assertTrue(targets.contains(board.getCellAt(21, 6)));	
+		assertEquals(1, targets.size());
+		assertTrue(targets.contains(board.getCellAt(6, 22)));	
 
-		board.calcTargets(14, 0, 1);
+		board.calcTargets(15, 0, 1);
 		targets= board.getTargets();
-		assertEquals(3, targets.size());
-		assertTrue(targets.contains(board.getCellAt(14, 1)));
-		assertTrue(targets.contains(board.getCellAt(13, 0)));	
-		assertTrue(targets.contains(board.getCellAt(15, 0)));			
+		assertEquals(1, targets.size());
+		assertTrue(targets.contains(board.getCellAt(15, 1)));			
 	}
 
 	// Tests of just walkways, 2 steps
 	// These are LIGHT BLUE on the planning spreadsheet
 	@Test
 	public void testTargetsTwoSteps() {
-		board.calcTargets(21, 7, 2);
+		board.calcTargets(6, 23, 2);
 		Set<BoardCell> targets= board.getTargets();
 		assertEquals(2, targets.size());
-		assertTrue(targets.contains(board.getCellAt(19, 7)));
-		assertTrue(targets.contains(board.getCellAt(20, 6)));
+		assertTrue(targets.contains(board.getCellAt(6, 21)));
+		assertTrue(targets.contains(board.getCellAt(7, 22)));
 
-		board.calcTargets(14, 0, 2);
+		board.calcTargets(15, 0, 2);
 		targets= board.getTargets();
 		assertEquals(3, targets.size());
-		assertTrue(targets.contains(board.getCellAt(12, 0)));
-		assertTrue(targets.contains(board.getCellAt(14, 2)));	
-		assertTrue(targets.contains(board.getCellAt(15, 1)));			
+		assertTrue(targets.contains(board.getCellAt(14, 1)));	
+		assertTrue(targets.contains(board.getCellAt(15, 2)));			
 	}
 
 	// Tests of just walkways, 4 steps

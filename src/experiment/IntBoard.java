@@ -43,27 +43,85 @@ public class IntBoard {
 			for (int j = 0; j < myCol; j++) {
 				Set<BoardCell> temp = new HashSet<BoardCell> ();
 				Set<BoardCell> temp2 = new HashSet<BoardCell> ();
-				if (!grid[i][j].isRoom()) {
-					if (i+1 < myRow) 
+				if (grid[i][j].isRoom()){
+					myMap.put(grid[i][j],Collections.emptySet());
+				}
+				else if (grid[i][j].isDoorway()){
+					switch(grid[i][j].getDoorDirection()){
+					case UP:
+						if (i+1 < myRow) 
+							temp.add(grid[i+1][j]);
+						myMap.put(grid[i][j], temp);
+						break;
+					case DOWN:
+						if (i-1 >= 0)
+							temp.add(grid[i-1][j]);
+						myMap.put(grid[i][j], temp);
+						break;
+					case LEFT:
+						if (j-1 >= 0)
+							temp.add(grid[i][j-1]);
+							myMap.put(grid[i][j], temp);
+							break;
+					case RIGHT:
+						if (j+1 < myCol)
+							temp.add(grid[i][j+1]);
+						myMap.put(grid[i][j], temp);
+						break;
+					default:
+						break;
+						
+					}
+				}
+				else if(grid[i][j].isWalkway()){
+					DoorDirection doorway = DoorDirection.NONE;
+					if (i+1 < myRow) {
 						temp.add(grid[i+1][j]);
+						doorway = DoorDirection.UP;
+					}
 					if (j+1 < myCol) {
 						temp.add(grid[i][j+1]);
+						doorway = DoorDirection.RIGHT;
 					}
-					if (i-1 >= 0)
+					if (i-1 >= 0){
 						temp.add(grid[i-1][j]);
-					if (j-1 >= 0)
+						doorway = DoorDirection.DOWN;
+					}
+					if (j-1 >= 0){
 						temp.add(grid[i][j-1]);
+						doorway = DoorDirection.LEFT;
+					}
 					for (BoardCell t: temp) {
-						if (t.getInitial() == 'W' || t.isDoorway()) {
+						if (t.getInitial() == 'W' ){
 							temp2.add(t);
+						}
+						else if(t.isDoorway()){
+							switch(grid[i][j].getDoorDirection()){
+							case UP:
+								if (t.getRow()-1 == i) 
+									temp2.add(t);
+								break;
+							case DOWN:
+								if (t.getRow() +1 == i)
+									temp2.add(t);
+								break;
+							case LEFT:
+								if (t.getColumn() + 1 == j)
+									temp2.add(t);
+								break;
+							case RIGHT:
+								if (t.getColumn()-1 == j )
+									temp2.add(t);
+								break;
+							default:
+								break;
+								
+							}
 						}
 					}
 					myMap.put(grid[i][j], temp2);
 				}
-				else {
-					myMap.put(grid[i][j],Collections.emptySet());
-				}
-			}
+			} 
 		}
 	}
 

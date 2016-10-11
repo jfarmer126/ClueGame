@@ -10,6 +10,7 @@ import org.junit.Test;
 import experiment.BoardCell;
 import experiment.IntBoard;
 
+//These are our tests to check for correct calculation of adjacencies and targets
 public class IntBoardTests {
 
 	private IntBoard board;

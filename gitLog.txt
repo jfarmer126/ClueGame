@@ -1,0 +1,140 @@
+*WE did all of the assignment using pair programming*
+
+commit 5624ddc4def23269f7473900671156d5c33c718c
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Tue Oct 11 16:28:59 2016 -0600
+
+    All tests pass
+
+commit a8b431ad015608f63d29589c1ce9f9d3c81e7ebc
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Tue Oct 11 15:29:29 2016 -0600
+
+    adjacencies tests pass
+
+commit 341a4951f9fc8c07e3c3e1a3bc9d937b451dc0c0
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Sun Oct 9 17:07:34 2016 -0600
+
+    Adjacency tests
+
+commit 6eb660c7886fb7fc69c9eded8e381b4dfaaa9be0
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Sun Oct 9 16:29:25 2016 -0600
+
+    adjacency tests -- IntBoard
+
+commit ee05326e7bf6e7150b0c6609ec1d175809018d48
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Sun Oct 9 15:27:48 2016 -0600
+
+    all tests written but fail
+
+commit 1f6f619923bef87470c69bbd5a7998a074d9a010
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Sun Oct 9 15:19:45 2016 -0600
+
+    Walkway tests written
+
+commit 388a0d182d9f3f6f873f0c656bdd5bd923df8ea7
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Sun Oct 9 14:48:12 2016 -0600
+
+     written own tests
+
+commit 82fc96886a2f4597326051555b80b932b0db57ff
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Sun Oct 9 14:08:14 2016 -0600
+
+    add intboard tests
+
+commit e24fdfff641e74dcb01e47586bc2d186478c970b
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Sun Oct 9 14:03:42 2016 -0600
+
+    added TargetTests
+
+commit 2d3d79954a5579b17e6fba55769c6978ac91b4ab
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Thu Oct 6 18:20:24 2016 -0600
+
+    updated with correct comments
+
+commit 1aef87961bd798ab48425fde803829c390b22ccb
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Thu Oct 6 18:16:32 2016 -0600
+
+    Comments added
+
+commit b1d97f229077e90aefe0713c38f9ffa0ed2028d1
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Thu Oct 6 17:59:13 2016 -0600
+
+    all missing files added to data
+
+commit ba29d7a55bb9ea06405c7219da2c245e410c53b2
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Thu Oct 6 17:57:53 2016 -0600
+
+    All tests pass
+
+commit 82a1d8443366a866f78569dbc53ebf4e832bbbb9
+Merge: c4ef1ed c8761db
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Thu Oct 6 16:21:21 2016 -0600
+
+    recovered files
+
+commit c4ef1ede2a0983c111f32c1f99a4e92483f2c851
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Thu Oct 6 16:18:41 2016 -0600
+
+    Panic
+
+commit c8761db3ae34468ee6b44d7ffed85feb64376e52
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Thu Oct 6 16:14:08 2016 -0600
+
+    fixed own files
+
+commit 60af8be1eba398b96e34057f86edb384ec816e29
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Thu Oct 6 16:11:06 2016 -0600
+
+    both CR tests run
+
+commit 71d83cfbed387efddd2455e2788eef256b992f2f
+Author: Ziru Wang <zirwang@adit.mines.edu>
+Date:   Thu Oct 6 15:08:27 2016 -0600
+
+    passes room layout test
+
+commit 455d7887f6a6badcdba8b2130e8ee0a30ca4ab3d
+Author: Ruby Wang <zirwang@mymail.mines.edu>
+Date:   Wed Oct 5 13:42:54 2016 -0600
+
+    Fixed import errors in CR tests
+
+commit 5b1a15c8ae1fdd371b2a0e7441cdc82eaa4e33e5
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Tue Oct 4 16:15:51 2016 -0600
+
+    Failed Tests for reading board
+
+commit 41698cbd7dbd4c9e2e22ccf5e682c56ba47d3444
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Tue Oct 4 15:02:09 2016 -0600
+
+    added data
+
+commit 27c33fda52ae544433365ac517aee6f493943d08
+Author: Zhiqu Zhang <zhzzhang@adit.mines.edu>
+Date:   Tue Oct 4 14:58:15 2016 -0600
+
+    added all files initial commit
+
+commit 1068c44b203754a7b0e5818b63ef1e3b4ecb89df
+Author: zhzzhang <zhzzhang@mymail.mines.edu>
+Date:   Tue Oct 4 14:50:31 2016 -0600
+
+    Initial commit

@@ -13,12 +13,12 @@ import experiment.IntBoard;
 public class IntBoardTests {
 
 	private IntBoard board;
+	
 	@Before
 	public void initIntBoard() {
 		board = board.getInstance();
-		board.initialize();
 		board.setConfigFiles("data/Clue.csv", "data/legend.txt");
-		board.calcAdjacencies();
+		board.initialize();
 	}
 
 	//tests adjacency top corner
@@ -253,8 +253,10 @@ public class IntBoardTests {
 	public void testTargetsIntoRoomShortcut() 
 	{
 		board.calcTargets(16, 8, 3);
+		
 		Set<BoardCell> targets= board.getTargets();
-		assertEquals(8, targets.size());
+		System.out.println(targets);
+		assertEquals(9, targets.size());
 		// directly up and down
 		assertTrue(targets.contains(board.getCellAt(15, 8)));
 		assertTrue(targets.contains(board.getCellAt(17, 8)));
@@ -264,6 +266,7 @@ public class IntBoardTests {
 		assertTrue(targets.contains(board.getCellAt(18, 7)));
 		assertTrue(targets.contains(board.getCellAt(15, 10)));
 		// up then left/right
+		assertTrue(targets.contains(board.getCellAt(15, 6)));
 		assertTrue(targets.contains(board.getCellAt(14, 7)));
 		assertTrue(targets.contains(board.getCellAt(14, 9)));
 		// into the rooms

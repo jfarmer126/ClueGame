@@ -26,7 +26,6 @@ public class CR_BoardAdjTargetTests {
 		board = IntBoard.getInstance();
 		board.setConfigFiles("data/CR_ClueLayout.csv", "data/CR_ClueLegend.txt");		
 		board.initialize();
-		board.calcAdjacencies();
 	}
 
 	// Ensure that player does not move around within room

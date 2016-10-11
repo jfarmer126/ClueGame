@@ -97,22 +97,28 @@ public class IntBoard {
 				}
 			} 
 		}
-		System.out.println(myMap.get(grid[13][11]));
 	}
 
 	public void calcTargets(int row, int col, int pathLength) {
+		visited.clear();
+		targets.clear();
 		visited.add(grid[row][col]);
-		for (BoardCell b : myMap.get(grid[row][col])) {
+		findAllTargets(grid[row][col], pathLength);
+	}
+	public void findAllTargets(BoardCell cell, int pathLength){
+		for (BoardCell b : myMap.get(cell)) {
 			if (!(visited.contains(b))) {
 				visited.add(b);
 				if (pathLength == 1 || b.isDoorway()) {
 					targets.add(b);
+					visited.remove(b);
 				}
 				else {
-					calcTargets(b.getRow(), b.getColumn(), pathLength-1);
+					findAllTargets(b, pathLength-1);
+					visited.remove(b);
+					
 				}
-				visited.remove(b);
-			}	
+			}
 		}
 	}
 
@@ -202,6 +208,7 @@ public class IntBoard {
 		try {
 			loadRoomConfig();
 			loadBoardConfig();
+			calcAdjacencies();
 		}catch (Exception b) {
 
 		}

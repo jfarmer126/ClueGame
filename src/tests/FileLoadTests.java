@@ -11,7 +11,7 @@ import experiment.BoardCell;
 import experiment.DoorDirection;
 import experiment.IntBoard;
 
-//These are the our written tests
+//These are the our written tests to test Initialization of the board
 public class FileLoadTests {
 
 	//Initializes board

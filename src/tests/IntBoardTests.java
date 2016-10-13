@@ -256,7 +256,6 @@ public class IntBoardTests {
 		board.calcTargets(16, 8, 3);
 		
 		Set<BoardCell> targets= board.getTargets();
-		System.out.println(targets);
 		assertEquals(9, targets.size());
 		// directly up and down
 		assertTrue(targets.contains(board.getCellAt(15, 8)));
